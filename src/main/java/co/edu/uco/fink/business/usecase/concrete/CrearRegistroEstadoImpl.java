@@ -7,7 +7,6 @@ import co.edu.uco.fink.crosscutting.exception.Enums.Lugar;
 import co.edu.uco.fink.crosscutting.exception.FinKException;
 import co.edu.uco.fink.crosscutting.exception.messageCatalog.MessageCatalogStrategy;
 import co.edu.uco.fink.crosscutting.exception.messageCatalog.data.CodigoMensaje;
-import co.edu.uco.fink.crosscutting.helpers.TextHelper;
 import co.edu.uco.fink.data.dao.factory.DAOfactory;
 import co.edu.uco.fink.entity.AnimalEntity;
 import co.edu.uco.fink.entity.RegistroEstadoAnimalEntity;
