@@ -13,7 +13,7 @@ import co.edu.uco.fink.dto.animales.RegistroEstadoAnimalDTO;
 
 public class CrearRegistroEstadoFachadaImpl {
 
-    public DAOfactory factory;
+    private final DAOfactory factory;
 
     public CrearRegistroEstadoFachadaImpl(){
         factory = DAOfactory.getFactory(Factory.POSTGRESQL);
@@ -40,5 +40,4 @@ public class CrearRegistroEstadoFachadaImpl {
             factory.cerrarConexion();
         }
     }
-
 }
