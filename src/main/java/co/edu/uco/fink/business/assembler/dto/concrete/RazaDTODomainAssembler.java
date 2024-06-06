@@ -32,7 +32,7 @@ public class RazaDTODomainAssembler implements DTODomainAssembler<RazaDomain, Ra
     @Override
     public RazaDTO ensamblarDTO(RazaDomain dominio) {
         var EspecieDomainTemp = ObjectHelper.getObjectHelper().getDefault(dominio, RazaDomain.Crear());
-        EspecieDTO especieDTO = especieAssembler.ensamblarDTO(RazaDomain.Crear().getEspecie());
+        EspecieDTO especieDTO = especieAssembler.ensamblarDTO(EspecieDomainTemp.getEspecie());
         return new RazaDTO(EspecieDomainTemp.getIdentificador(), EspecieDomainTemp.getNombre(), especieDTO);
     }
 
