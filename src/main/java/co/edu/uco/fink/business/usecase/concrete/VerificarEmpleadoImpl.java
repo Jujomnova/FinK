@@ -37,6 +37,14 @@ public class VerificarEmpleadoImpl implements VerificarEmpleado {
     }
 
     public final FincaEntity validarFinca(EmpleadoEntity empleado){
+
+        if (empleado.getDocumento() == 0){
+            String mensajeUsuario = "documento invalido";
+            String mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00003));
+
+            throw new FinKException(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
+        }
+
         List<FincaEntity> resultado = factory.getEmpleadoDAO().verificarEmpleado(empleado);
 
         FincaEntity fincares = null;
@@ -46,7 +54,7 @@ public class VerificarEmpleadoImpl implements VerificarEmpleado {
         }
 
         if (Objects.equals(fincares, null)){
-            String mensajeUsuario = "El nombre de usuario o constraseña son incorrectos";
+            String mensajeUsuario = "El numero de documento o constraseña son incorrectos";
             String mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00003));
 
             throw new FinKException(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
