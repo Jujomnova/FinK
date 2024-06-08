@@ -15,6 +15,7 @@ public class AnimalEntity {
     private FincaEntity finca;
 
     public AnimalEntity(final int identificador) {
+        setIdentificador(identificador);
         setRaza(RazaEntity.Build());
         setCodigo(NumericHelper.ZERO);
         setFinca(FincaEntity.build());
