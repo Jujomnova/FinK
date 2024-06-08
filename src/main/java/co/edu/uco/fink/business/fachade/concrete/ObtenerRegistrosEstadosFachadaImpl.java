@@ -1,6 +1,8 @@
 package co.edu.uco.fink.business.fachade.concrete;
 
+import co.edu.uco.fink.business.assembler.dto.concrete.FincaDTODomainAssembler;
 import co.edu.uco.fink.business.assembler.dto.concrete.RegistroEstadoAnimalDTODomainAssembler;
+import co.edu.uco.fink.business.fachade.ObtenerRegistrosEstadosFachada;
 import co.edu.uco.fink.business.usecase.ObtenerRegistrosEstados;
 import co.edu.uco.fink.business.usecase.concrete.ObtenerRegistrosEstadosimpl;
 import co.edu.uco.fink.crosscutting.exception.FinKException;
@@ -11,20 +13,22 @@ import co.edu.uco.fink.crosscutting.helpers.TextHelper;
 import co.edu.uco.fink.data.dao.factory.DAOfactory;
 import co.edu.uco.fink.data.dao.factory.enums.Factory;
 import co.edu.uco.fink.dto.animales.RegistroEstadoAnimalDTO;
+import co.edu.uco.fink.dto.fincas.FincaDTO;
 
 import java.util.List;
 
-public class ObtenerRegistrosEstadosFachadaImpl {
+public class ObtenerRegistrosEstadosFachadaImpl implements ObtenerRegistrosEstadosFachada {
     public final DAOfactory factory;
 
     public ObtenerRegistrosEstadosFachadaImpl(){
         factory = DAOfactory.getFactory(Factory.POSTGRESQL);
     }
 
-    public List<RegistroEstadoAnimalDTO> ejecutar() {
+    @Override
+    public List<RegistroEstadoAnimalDTO> ejeciutar(FincaDTO finca) {
         try {
             final ObtenerRegistrosEstados useCase = new ObtenerRegistrosEstadosimpl(factory);
-            var resultados = useCase.ejecutar();
+            var resultados = useCase.ejecutar(FincaDTODomainAssembler.obtenerInstancia().ensamblarDominio(finca));
             return RegistroEstadoAnimalDTODomainAssembler.obtenerInstancia().ensamblarListaDTO(resultados);
         } catch (FinKException e){
             throw e;

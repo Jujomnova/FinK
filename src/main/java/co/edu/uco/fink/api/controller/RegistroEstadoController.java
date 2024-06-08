@@ -9,6 +9,7 @@ import co.edu.uco.fink.crosscutting.exception.messageCatalog.MessageCatalogStrat
 import co.edu.uco.fink.crosscutting.exception.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.fink.crosscutting.helpers.TextHelper;
 import co.edu.uco.fink.dto.animales.RegistroEstadoAnimalDTO;
+import co.edu.uco.fink.dto.fincas.FincaDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,14 +24,14 @@ public final class RegistroEstadoController {
         return RegistroEstadoAnimalDTO.Build();
     }
 
-    @GetMapping("/obtenerEstados")
-    public ResponseEntity<RegistroEstadoResponse> obtener(){
+    @PostMapping("/obtenerEstados")
+    public ResponseEntity<RegistroEstadoResponse> obtener(@RequestBody FincaDTO finca){
         var httpStatusCode = HttpStatus.ACCEPTED;
         var registroEstadoResponse = new RegistroEstadoResponse();
 
         try {
             var fachade = new ObtenerRegistrosEstadosFachadaImpl();
-            registroEstadoResponse.setDatos(fachade.ejecutar());
+            registroEstadoResponse.setDatos(fachade.ejeciutar(finca));
         } catch (final FinKException exception){
             exception.printStackTrace();
             registroEstadoResponse.getMensajes().add(exception.getMensajeUsuario());
