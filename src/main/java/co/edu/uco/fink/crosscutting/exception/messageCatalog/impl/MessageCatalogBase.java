@@ -85,6 +85,10 @@ public class MessageCatalogBase implements MessageCatalog {
                 new Mensaje(CodigoMensaje.M000045, "Se ha presentado un problema tratando de obtener la informacion de la pagina"));
         mensajes.put(CodigoMensaje.M000046.getIdentificador(),
                 new Mensaje(CodigoMensaje.M000046, "Se ha presentado un problema INESPERADO tratando de consultar la informacion de \"${1}\""));
+        mensajes.put(CodigoMensaje.M000047.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000047, "El estado que se intentó asignar no existe"));
+        mensajes.put(CodigoMensaje.M000048.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000048, "Se intentó asignar a un animal un estado que no existe en el sistema"));
     }
 
     @Override

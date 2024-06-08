@@ -1,12 +1,7 @@
 package co.edu.uco.fink.entity;
 
-import co.edu.uco.fink.business.domain.FincaDomain;
-import co.edu.uco.fink.business.domain.RazaDomain;
 import co.edu.uco.fink.crosscutting.helpers.NumericHelper;
 import co.edu.uco.fink.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.fink.dto.animales.AnimalDTO;
-import co.edu.uco.fink.dto.animales.RazaDTO;
-import co.edu.uco.fink.dto.fincas.FincaDTO;
 
 public class AnimalEntity {
     private int identificador;

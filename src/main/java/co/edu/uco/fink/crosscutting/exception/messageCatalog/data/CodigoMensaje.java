@@ -49,7 +49,9 @@ public enum CodigoMensaje {
     M000043(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "000043", false),
     M000044(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "000044", false),
     M000045(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "000045", true),
-    M000046(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "000046", true);
+    M000046(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "000046", true),
+    M000047(TipoMensaje.USUARIO, CategoriaMensaje.ERROR, "000047", true),
+    M000048(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "000048", true);
 
 
 

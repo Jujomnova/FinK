@@ -9,6 +9,7 @@ import co.edu.uco.fink.crosscutting.exception.messageCatalog.MessageCatalogStrat
 import co.edu.uco.fink.crosscutting.exception.messageCatalog.data.CodigoMensaje;
 import co.edu.uco.fink.data.dao.factory.DAOfactory;
 import co.edu.uco.fink.entity.AnimalEntity;
+import co.edu.uco.fink.entity.EstadoAnimalEntity;
 import co.edu.uco.fink.entity.RegistroEstadoAnimalEntity;
 
 import java.util.List;
@@ -20,6 +21,25 @@ public class CrearRegistroEstadoImpl implements CrearRegistroEstado {
 
     public CrearRegistroEstadoImpl(DAOfactory factory){
         this.factory = factory;
+    }
+
+    public void verificarExistencia(RegistroEstadoAnimalEntity registro){
+        List<EstadoAnimalEntity> resultado = factory.getEstadoAnimalDAO().consultar(registro.getEstado());
+
+        boolean existe = false;
+
+        for(EstadoAnimalEntity estado : resultado){
+            if (Objects.equals(estado.getEstado(), registro.getEstado().getEstado())){
+                existe = true;
+                break;
+            }
+        }
+
+        if(!existe){
+            String mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000047);
+            String mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000048);
+            throw new FinKException(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
+        }
     }
 
     public int obtenerIdentificador(RegistroEstadoAnimalEntity registro){
@@ -58,6 +78,8 @@ public class CrearRegistroEstadoImpl implements CrearRegistroEstado {
     @Override
     public void ejecutar(RegistroEstadoAnimalDomain registroEstadoAnimal) {
         RegistroEstadoAnimalEntity registroEntity = RegistroEstadoAnimalEntityDomainAssembler.obtenerInstancia().ensamblarEntidad(registroEstadoAnimal);
+
+        verificarExistencia(registroEntity);
 
         verificarEstado(registroEntity);
 
