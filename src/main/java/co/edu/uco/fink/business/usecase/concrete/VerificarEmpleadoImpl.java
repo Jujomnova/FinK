@@ -1,7 +1,6 @@
 package co.edu.uco.fink.business.usecase.concrete;
 
 import co.edu.uco.fink.business.assembler.entity.concrete.EmpleadoEntityDomainAssembler;
-import co.edu.uco.fink.business.assembler.entity.concrete.FincaEntityDomainAssembler;
 import co.edu.uco.fink.business.domain.EmpleadoDomain;
 import co.edu.uco.fink.business.usecase.VerificarEmpleado;
 import co.edu.uco.fink.crosscutting.exception.Enums.Lugar;
@@ -27,8 +26,8 @@ public class VerificarEmpleadoImpl implements VerificarEmpleado {
 
         for (EmpleadoEntity e : resultado){
             if (e.getDocumento() == empleado.getDocumento() && Objects.equals(e.getEstado(), "Inactivo")){
-                    String mensajeUsuario = "Usuario inactivo";
-                    String mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00003));
+                    String mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000043);
+                    String mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000044);
 
                     throw new FinKException(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
                 }
@@ -36,11 +35,11 @@ public class VerificarEmpleadoImpl implements VerificarEmpleado {
         }
     }
 
-    public final FincaEntity validarFinca(EmpleadoEntity empleado){
+    public final FincaEntity validarCredenciales(EmpleadoEntity empleado){
 
         if (empleado.getDocumento() == 0){
-            String mensajeUsuario = "documento invalido";
-            String mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00003));
+            String mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000041);
+            String mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000042);
 
             throw new FinKException(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
         }
@@ -54,8 +53,8 @@ public class VerificarEmpleadoImpl implements VerificarEmpleado {
         }
 
         if (Objects.equals(fincares, null)){
-            String mensajeUsuario = "El numero de documento o constraseña son incorrectos";
-            String mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00003));
+            String mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000039);
+            String mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000040));
 
             throw new FinKException(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
         }
@@ -67,7 +66,7 @@ public class VerificarEmpleadoImpl implements VerificarEmpleado {
     public EmpleadoDomain ejecutar(EmpleadoDomain empleado) {
         EmpleadoEntity empleadoEntity = EmpleadoEntityDomainAssembler.obtenerInstancia().ensamblarEntidad(empleado);
 
-        FincaEntity finca = validarFinca(empleadoEntity);
+        FincaEntity finca = validarCredenciales(empleadoEntity);
 
         empleadoEntity.getFinca().setId(finca.getId());
         empleadoEntity.getFinca().setNombre(finca.getNombre());

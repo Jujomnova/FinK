@@ -81,6 +81,10 @@ public class MessageCatalogBase implements MessageCatalog {
                 new Mensaje(CodigoMensaje.M000037, "Sesión iniciada con exito!"));
         mensajes.put(CodigoMensaje.M000038.getIdentificador(),
                 new Mensaje(CodigoMensaje.M000038, "Se ha presentado un problema registrando la información del nuevo estado"));
+        mensajes.put(CodigoMensaje.M000045.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000045, "Se ha presentado un problema tratando de obtener la informacion de la pagina"));
+        mensajes.put(CodigoMensaje.M000046.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000046, "Se ha presentado un problema INESPERADO tratando de consultar la informacion de \"${1}\""));
     }
 
     @Override

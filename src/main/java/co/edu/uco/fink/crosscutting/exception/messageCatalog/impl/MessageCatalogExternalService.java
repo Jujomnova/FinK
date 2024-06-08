@@ -30,6 +30,18 @@ public class MessageCatalogExternalService implements MessageCatalog {
                 new Mensaje(CodigoMensaje.M000029, "El animal ya tiene el estado que se intenta asignar"));
         mensajes.put(CodigoMensaje.M000030.getIdentificador(),
                 new Mensaje(CodigoMensaje.M000030, "Se ha intentado asignar un estado a un animal que ya tiene el estado"));
+        mensajes.put(CodigoMensaje.M000039.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000039, "El numero de documento o constraseña son incorrectos"));
+        mensajes.put(CodigoMensaje.M000040.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000040, "Se han ingresado credenciales incorrectas en el login"));
+        mensajes.put(CodigoMensaje.M000041.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000041, "documento invalido"));
+        mensajes.put(CodigoMensaje.M000042.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000042, "Se ha ingresado un numero de documento invalido"));
+        mensajes.put(CodigoMensaje.M000043.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000043, "El usuario ingresado está actualmente inactivo, por favor comuniquese con el administrador de su finca para reactivar su usuario"));
+        mensajes.put(CodigoMensaje.M000044.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000044, "Se ha intentado iniciar sesión con un usuario desactivado"));
     }
 
     @Override

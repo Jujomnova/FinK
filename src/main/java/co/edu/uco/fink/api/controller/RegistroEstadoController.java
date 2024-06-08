@@ -7,6 +7,7 @@ import co.edu.uco.fink.business.fachade.concrete.ObtenerRegistrosEstadosFachadaI
 import co.edu.uco.fink.crosscutting.exception.FinKException;
 import co.edu.uco.fink.crosscutting.exception.messageCatalog.MessageCatalogStrategy;
 import co.edu.uco.fink.crosscutting.exception.messageCatalog.data.CodigoMensaje;
+import co.edu.uco.fink.crosscutting.helpers.TextHelper;
 import co.edu.uco.fink.dto.animales.RegistroEstadoAnimalDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public final class RegistroEstadoController {
             httpStatusCode = HttpStatus.BAD_REQUEST;
         } catch (final Exception exception){
             exception.printStackTrace();
-            registroEstadoResponse.getMensajes().add("se ha presentado un problema inesperado");
+            registroEstadoResponse.getMensajes().add(TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000046), "la pagina"));
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return new ResponseEntity<>(registroEstadoResponse, httpStatusCode);

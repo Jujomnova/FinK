@@ -6,6 +6,9 @@ import co.edu.uco.fink.business.usecase.ObtenerEstados;
 import co.edu.uco.fink.business.usecase.concrete.ObtenerEstadosImpl;
 import co.edu.uco.fink.crosscutting.exception.FinKException;
 import co.edu.uco.fink.crosscutting.exception.custom.BusinessFinkException;
+import co.edu.uco.fink.crosscutting.exception.messageCatalog.MessageCatalogStrategy;
+import co.edu.uco.fink.crosscutting.exception.messageCatalog.data.CodigoMensaje;
+import co.edu.uco.fink.crosscutting.helpers.TextHelper;
 import co.edu.uco.fink.data.dao.factory.DAOfactory;
 import co.edu.uco.fink.data.dao.factory.enums.Factory;
 import co.edu.uco.fink.dto.animales.EstadoAnimalDTO;
@@ -29,8 +32,8 @@ public class ObtenerEstadoFachadaImpl implements ObtenerEstadoFachada {
         } catch (FinKException e){
             throw e;
         } catch (Exception e) {
-            var mensajeUsuario = "Se ha presentado un problema tratando de obtener la informacion de la pagina";
-            var mensajeTecnico = "Se ha presentado un problema INESPERADO tratando de consultar la informacion de los tipos de estados";
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000045);
+            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000046), "los tipos de estado");
 
             throw new BusinessFinkException(mensajeTecnico, mensajeUsuario);
         } finally {
