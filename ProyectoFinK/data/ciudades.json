@@ -1,0 +1,22 @@
+{
+    "Colombia": {
+        "Antioquia": ["Medellín", "Envigado", "Bello"],
+        "Cundinamarca": ["Bogotá", "Soacha", "Chía"],
+        "Valle del Cauca": ["Cali", "Palmira", "Buenaventura"]
+    },
+    "Argentina": {
+        "Buenos Aires": ["La Plata", "Mar del Plata", "Bahía Blanca"],
+        "Córdoba": ["Córdoba", "Villa Carlos Paz", "Alta Gracia"],
+        "Santa Fe": ["Rosario", "Santa Fe", "Rafaela"]
+    },
+    "Brasil": {
+        "São Paulo": ["São Paulo", "Campinas", "Santos"],
+        "Rio de Janeiro": ["Rio de Janeiro", "Niterói", "Petrópolis"],
+        "Minas Gerais": ["Belo Horizonte", "Uberlândia", "Juiz de Fora"]
+    },
+    "Chile": {
+        "Santiago": ["Santiago", "Maipú", "La Florida"],
+        "Valparaíso": ["Valparaíso", "Viña del Mar", "Quilpué"],
+        "Concepción": ["Concepción", "Talcahuano", "Chiguayante"]
+    }
+}

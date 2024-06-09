@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Finca</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">FinK</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="actualizarEstadoAnimal.html">Actualizar Estado Animal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="crearFinca.html">Crear Finca</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="crearAlmacenSuministro.html">Crear Almacen Suministro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Cerrar Sesión</a>
+                    </li>
+                </ul>
+                <span class="navbar-text text-white" id="nombreFinca"></span>
+            </div>
+        </nav>
+    </header>
+    <div id="app" class="container mt-4">
+        <h1 class="text-center font-weight-bold">Crear Finca</h1>
+        <form @submit.prevent="crearFinca">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" v-model="nombre" class="form-control" required>
+                <div class="invalid-feedback" v-if="errores.nombre">{{ errores.nombre }}</div>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" v-model="direccion" class="form-control" required>
+                <div class="invalid-feedback" v-if="errores.direccion">{{ errores.direccion }}</div>
+            </div>
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <select id="pais" v-model="pais" class="form-control" @change="cargarDepartamentos" required>
+                    <option value="" disabled>Seleccione un país</option>
+                    <option v-for="pais in listaPaises" :key="pais" :value="pais">{{ pais }}</option>
+                </select>
+                <div class="invalid-feedback" v-if="errores.pais">{{ errores.pais }}</div>
+            </div>
+            <div class="form-group">
+                <label for="departamento">Departamento:</label>
+                <select id="departamento" v-model="departamento" class="form-control" @change="cargarCiudades">
+                    <option value="" disabled>Seleccione un departamento</option>
+                    <option v-for="departamento in listaDepartamentos" :key="departamento" :value="departamento">{{ departamento }}</option>
+                </select>
+                <div class="invalid-feedback" v-if="errores.departamento">{{ errores.departamento }}</div>
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad:</label>
+                <select id="ciudad" v-model="ciudad" class="form-control">
+                    <option value="" disabled>Seleccione una ciudad</option>
+                    <option v-for="ciudad in listaCiudades" :key="ciudad" :value="ciudad">{{ ciudad }}</option>
+                </select>
+                <div class="invalid-feedback" v-if="errores.ciudad">{{ errores.ciudad }}</div>
+            </div>
+            <div class="form-group">
+                <label for="correoElectronico">Correo Electrónico:</label>
+                <input type="email" id="correoElectronico" v-model="correoElectronico" class="form-control" required>
+                <div class="invalid-feedback" v-if="errores.correoElectronico">{{ errores.correoElectronico }}</div>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" v-model="telefono" class="form-control" required>
+                <div class="invalid-feedback" v-if="errores.telefono">{{ errores.telefono }}</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Finca</button>
+        </form>
+    </div>
+    <footer class="footer mt-auto py-3 bg-primary">
+        <div class="container">
+            <p class="text-center text-white">Creado por: Juan David Cardenas, Juan Jose Moreno, Jhoel Ramirez</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/crearFinca.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nombreFinca = localStorage.getItem('nombreFinca');
+            if (nombreFinca) {
+                document.getElementById('nombreFinca').innerText = `Finca: ${nombreFinca}`;
+            }
+        });
+    </script>
+</body>
+</html>

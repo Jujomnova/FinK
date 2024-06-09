@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Tarea</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="menu-item"><a href="../index.html">Inicio</a></li>
+                <li class="menu-item">
+                    <a href="#">Trabajos</a>
+                    <ul class="submenu">
+                        <li><a href="crearTarea.html">Crear Tarea</a></li>
+                        <li><a href="buscarTarea.html">Buscar Tarea</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item"><a href="#">Almacenamiento</a></li>
+                <li class="menu-item"><a href="#">Finca</a></li>
+                <li class="menu-item"><a href="actualizarEstadoAnimal.html">Actualizar Estado Animal</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="app" class="container">
+        <h1>Crear Tarea</h1>
+        <form @submit.prevent="enviarFormulario">
+            <div>
+                <label for="cedulaEmpleado">Cédula del Empleado:</label>
+                <input type="text" id="cedulaEmpleado" v-model="tarea.idEmpleado" @input="formatearCedula" required>
+            </div>
+            <div>
+                <label for="tipoTarea">Tipo de Trabajo:</label>
+                <select id="tipoTarea" v-model="tarea.tipoTarea" required>
+                    <option value="" disabled>Seleccione el tipo de trabajo</option>
+                    <option value="Limpieza">Limpieza</option>
+                    <option value="Abastecimiento">Abastecimiento</option>
+                    <option value="Recolección">Recolección</option>
+                </select>
+            </div>
+            <div>
+                <label for="finca">Finca:</label>
+                <select id="finca" v-model="tarea.lugarFinca.finca" @change="cargarUbicaciones" required>
+                    <option value="" disabled>Seleccione la finca</option>
+                    <option v-for="finca in fincas" :key="finca" :value="finca">{{ finca }}</option>
+                </select>
+            </div>
+            <div>
+                <label for="ubicacion">Ubicación:</label>
+                <input type="text" id="ubicacion" v-model="tarea.lugarFinca.ubicacion" required>
+            </div>
+            <div>
+                <label for="nomenclatura">Nomenclatura:</label>
+                <input type="text" id="nomenclatura" v-model="tarea.lugarFinca.nomenclatura" required>
+            </div>
+            <div>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" v-model="tarea.descripcion"></textarea>
+            </div>
+            <button type="submit">Crear Tarea</button>
+        </form>
+    </div>
+    <footer>
+        <p>Creado por: Juan David Cardenas, Juan Jose Moreno, Jhoel Ramirez</p>
+    </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/crearTarea.js"></script>
+</body>
+</html>

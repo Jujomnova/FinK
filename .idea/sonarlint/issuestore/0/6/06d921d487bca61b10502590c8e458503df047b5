@@ -1,0 +1,7 @@
+
+“
+java:S1845!"PRename method "build" to prevent any misunderstanding/clash with method "Build".(¸ÖÚÜ8ºÍ˜†ü1J$c1d45e5e-1624-4d64-ab2c-bf6c73464c68
+•	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û’¥™ùÿÿÿÿ8¿Í˜†ü1J$8b47a5e0-50a4-45cb-9763-c0b1c1998b12
+•	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÑà¿ýÿÿÿÿ8ÀÍ˜†ü1J$df010632-a107-4930-b337-d0784d83faec
+ˆ
+java:S1128"@Remove this unused import 'co.edu.uco.fink.dto.fincas.FincaDTO'.(äéß“úÿÿÿÿ8µÞþÓü1J$6e949e1e-bcbe-4fcd-b9aa-36827dc8831c

@@ -1,0 +1,8 @@
+
+“	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ·Ô‰8ó¸ÈËþ1J$fef06819-b280-4c1d-948e-dcf3697b21b9
+’
+java:S1128"ORemove this unused import 'co.edu.uco.fink.crosscutting.helpers.NumericHelper'.(‚¦ƒ›8ÿ»ÈËþ1J$f93c2c95-bbd7-478f-ada0-fa183e569476
+‹
+java:S1128	"HRemove this unused import 'co.edu.uco.fink.data.dao.factory.DAOfactory'.(Üï—‰8€¼ÈËþ1J$5330a4fa-7cab-449f-a606-4e2dfd9e56a9
+|
+java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8€¼ÈËþ1J$5ffc1f22-94cc-4110-b3c8-cf2898281cf5
