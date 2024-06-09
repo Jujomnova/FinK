@@ -1,11 +1,10 @@
 package co.edu.uco.fink.business.assembler.dto.concrete;
 
 import co.edu.uco.fink.business.assembler.dto.DTODomainAssembler;
-import co.edu.uco.fink.business.domain.*;
 import co.edu.uco.fink.business.domain.AnimalDomain;
+import co.edu.uco.fink.business.domain.FincaDomain;
+import co.edu.uco.fink.business.domain.RazaDomain;
 import co.edu.uco.fink.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.fink.dto.animales.AnimalDTO;
-import co.edu.uco.fink.dto.animales.EspecieDTO;
 import co.edu.uco.fink.dto.animales.AnimalDTO;
 import co.edu.uco.fink.dto.animales.RazaDTO;
 import co.edu.uco.fink.dto.fincas.FincaDTO;
