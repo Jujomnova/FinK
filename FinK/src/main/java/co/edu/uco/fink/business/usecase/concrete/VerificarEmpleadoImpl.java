@@ -37,7 +37,7 @@ public class VerificarEmpleadoImpl implements VerificarEmpleado {
 
     public final FincaEntity validarCredenciales(EmpleadoEntity empleado){
 
-        if (empleado.getDocumento() == 0){
+        if (empleado.getDocumento() < 1){
             String mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000041);
             String mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000042);
 
