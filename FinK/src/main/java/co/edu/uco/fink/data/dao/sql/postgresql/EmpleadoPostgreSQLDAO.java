@@ -50,13 +50,13 @@ public class EmpleadoPostgreSQLDAO extends SQLconnection implements EmpleadoDAO 
             }
         } catch (final SQLException exception){
             var mensajeUsuario = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002));
-            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002), "SELECT", "tareas", "tarea");
+            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000023), "consultar", "empleado");
             throw new DataFinKException(mensajeTecnico, mensajeUsuario, exception);
         } catch (final DataFinKException exception){
             throw exception;
         } catch (final Exception exception) {
             var mensajeUsuario = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002));
-            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002), "SELECT", "tareas", "tarea");
+            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000024), "consultar", "empleado");
             throw new DataFinKException(mensajeTecnico, mensajeUsuario, exception);
         }
         return listaFincas;
@@ -84,13 +84,13 @@ public class EmpleadoPostgreSQLDAO extends SQLconnection implements EmpleadoDAO 
             }
         } catch (final SQLException exception){
             var mensajeUsuario = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002));
-            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000023), "consultar", "empleados");
+            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000023), "consultar", "empleado");
             throw new DataFinKException(mensajeTecnico, mensajeUsuario, exception);
         } catch (final DataFinKException exception){
             throw exception;
         } catch (final Exception exception) {
             var mensajeUsuario = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002));
-            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000024), "consultar", "empleados");
+            var mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000024), "consultar", "empleado");
             throw new DataFinKException(mensajeTecnico, mensajeUsuario, exception);
         }
         return listaEmpleados;

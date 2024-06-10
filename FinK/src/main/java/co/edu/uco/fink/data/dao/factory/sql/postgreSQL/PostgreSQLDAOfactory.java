@@ -3,7 +3,6 @@ package co.edu.uco.fink.data.dao.factory.sql.postgreSQL;
 import co.edu.uco.fink.crosscutting.helpers.SQLHelper;
 import co.edu.uco.fink.data.dao.*;
 import co.edu.uco.fink.data.dao.factory.DAOfactory;
-import co.edu.uco.fink.data.dao.sql.SQLconnection;
 import co.edu.uco.fink.data.dao.sql.postgresql.*;
 
 import java.sql.Connection;

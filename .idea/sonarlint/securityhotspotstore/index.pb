@@ -2017,3 +2017,5 @@ Q.idea/sonarlint/securityhotspotstore/a/b/ab107c1e64f86cd437c420aa7f1d157e193fec
 Q.idea/sonarlint/securityhotspotstore/a/b/ab37f40691f613a4c36add777f08a8a8dfc42778,d\9\d915b07a515625445fa2d8d7434aeb4826fda2c6
 Å
 Q.idea/sonarlint/securityhotspotstore/a/b/ab4595b1a68784ba0a90ad372e53bc91761a5299,4\f\4ff139ae14fb626b30386b50105dba1fae43eeb5
+N
+ProyectoFinK/package-lock.json,b\e\bedd061e011f822529ff163e9c128041c25d9e34

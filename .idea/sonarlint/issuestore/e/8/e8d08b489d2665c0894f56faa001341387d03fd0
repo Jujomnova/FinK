@@ -1,2 +1,6 @@
 
 k	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñºì„ıÿÿÿÿ
+]
+java:S1128	"ARemove this unused import 'co.edu.uco.fink.entity.EspecieEntity'.(º‹ËF8Û¾‰€2
+[
+java:S1128">Remove this unused import 'co.edu.uco.fink.entity.RazaEntity'.(µëîá8÷¿‰€2

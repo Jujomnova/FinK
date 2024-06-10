@@ -89,6 +89,8 @@ public class MessageCatalogBase implements MessageCatalog {
                 new Mensaje(CodigoMensaje.M000047, "El estado que se intentó asignar no existe"));
         mensajes.put(CodigoMensaje.M000048.getIdentificador(),
                 new Mensaje(CodigoMensaje.M000048, "Se intentó asignar a un animal un estado que no existe en el sistema"));
+        mensajes.put(CodigoMensaje.M000049.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000049, "No existe configurada una factoria de datos para una base de datos \"${1}\""));
     }
 
     @Override
