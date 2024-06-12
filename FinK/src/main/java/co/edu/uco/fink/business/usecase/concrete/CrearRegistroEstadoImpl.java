@@ -47,10 +47,16 @@ public class CrearRegistroEstadoImpl implements CrearRegistroEstado {
         int identificador = 0;
 
         for (AnimalEntity animal : resultados){
-            if (Objects.equals(animal.getRaza().getEspecie().getNombre(), registro.getAnimal().getRaza().getEspecie().getNombre()) && Objects.equals(animal.getRaza().getNombre(), registro.getAnimal().getRaza().getNombre()) && animal.getCodigo() == registro.getAnimal().getCodigo()){
+            if (Objects.equals(animal.getRaza().getEspecie().getNombre(), registro.getAnimal().getRaza().getEspecie().getNombre()) && Objects.equals(animal.getRaza().getNombre(), registro.getAnimal().getRaza().getNombre()) && animal.getCodigo() == registro.getAnimal().getCodigo() && Objects.equals(animal.getFinca().getNombre(), registro.getAnimal().getFinca().getNombre())){
                 identificador = animal.getIdentificador();
                 break;
             }
+        }
+
+        if (identificador == 0){
+            String mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000050);
+            String mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000051);
+            throw new FinKException(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
         }
 
         return identificador;
@@ -60,7 +66,7 @@ public class CrearRegistroEstadoImpl implements CrearRegistroEstado {
         List<RegistroEstadoAnimalEntity> resultados = factory.getRegistroEstadoAnimalDAO().consultar(registro);
 
         for (RegistroEstadoAnimalEntity entidad : resultados){
-            if (Objects.equals(entidad.getAnimal().getRaza().getEspecie().getNombre(), registro.getAnimal().getRaza().getEspecie().getNombre()) && Objects.equals(entidad.getAnimal().getRaza().getNombre(), registro.getAnimal().getRaza().getNombre()) && entidad.getAnimal().getCodigo() == registro.getAnimal().getCodigo()){
+            if (Objects.equals(entidad.getAnimal().getRaza().getEspecie().getNombre(), registro.getAnimal().getRaza().getEspecie().getNombre()) && Objects.equals(entidad.getAnimal().getRaza().getNombre(), registro.getAnimal().getRaza().getNombre()) && entidad.getAnimal().getCodigo() == registro.getAnimal().getCodigo() && Objects.equals(entidad.getAnimal().getFinca().getNombre(), registro.getAnimal().getFinca().getNombre())){
                 if (Objects.equals(entidad.getEstado().getEstado(), "Fallecido") || Objects.equals(entidad.getEstado().getEstado(), "Vendido")){
                     String mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000027);
                     String mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000028);
@@ -79,11 +85,10 @@ public class CrearRegistroEstadoImpl implements CrearRegistroEstado {
     public void ejecutar(RegistroEstadoAnimalDomain registroEstadoAnimal) {
         RegistroEstadoAnimalEntity registroEntity = RegistroEstadoAnimalEntityDomainAssembler.obtenerInstancia().ensamblarEntidad(registroEstadoAnimal);
 
-        verificarExistencia(registroEntity);
-
-        verificarEstado(registroEntity);
-
         registroEntity.getAnimal().setIdentificador(obtenerIdentificador(registroEntity));
+
+        verificarExistencia(registroEntity);
+        verificarEstado(registroEntity);
 
         factory.getRegistroEstadoAnimalDAO().actualizarEstado(registroEntity.getAnimal(), registroEntity.getEstado());
     }

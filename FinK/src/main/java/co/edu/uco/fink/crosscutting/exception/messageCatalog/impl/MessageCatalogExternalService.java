@@ -42,6 +42,10 @@ public class MessageCatalogExternalService implements MessageCatalog {
                 new Mensaje(CodigoMensaje.M000043, "El usuario ingresado está actualmente inactivo, por favor comuniquese con el administrador de su finca para reactivar su usuario"));
         mensajes.put(CodigoMensaje.M000044.getIdentificador(),
                 new Mensaje(CodigoMensaje.M000044, "Se ha intentado iniciar sesión con un usuario desactivado"));
+        mensajes.put(CodigoMensaje.M000050.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000050, "El animal ingresado no existe en la finca actual"));
+        mensajes.put(CodigoMensaje.M000051.getIdentificador(),
+                new Mensaje(CodigoMensaje.M000051, "Se han ingresado datos de un animal que no existe en la finca actual"));
     }
 
     @Override

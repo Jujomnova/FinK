@@ -41,7 +41,7 @@ public final class EmpleadoController {
         }
         catch (Exception exception){
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000038);
+            var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002);
             empleadoResponse.getMensajes().add(mensajeUsuario);
             exception.printStackTrace();
         }

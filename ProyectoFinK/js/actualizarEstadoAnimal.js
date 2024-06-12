@@ -24,23 +24,47 @@ const appEstadoAnimal = Vue.createApp({
                 },
                 body: JSON.stringify({ nombre: nombreFinca })
             })
-                .then(response => response.json())
+                .then(response => {
+                    return response.json().then(data => {
+                        if (!response.ok) {
+                            return Promise.reject(data);
+                        }
+                        return data;
+                    });
+                })
                 .then(data => {
                     this.registros = data.datos;
                     this.registrosFiltrados = this.registros;
                     this.actualizarFiltros();
                 })
                 .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al cargar los registros.'
+                    });
                     console.error('Error al cargar los registros:', error);
                 });
         },
         cargarEstados() {
             fetch('http://localhost:8080/api/v1/estado/obtener')
-                .then(response => response.json())
+                .then(response => {
+                    return response.json().then(data => {
+                        if (!response.ok) {
+                            return Promise.reject(data);
+                        }
+                        return data;
+                    });
+                })
                 .then(data => {
                     this.estadosFiltrados = data.datos.map(estado => estado.estado);
                 })
                 .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al cargar los estados.'
+                    });
                     console.error('Error al cargar los estados:', error);
                 });
         },
@@ -66,7 +90,11 @@ const appEstadoAnimal = Vue.createApp({
         },
         actualizarEstado() {
             if (!this.animalSeleccionado || !this.nuevoEstadoSeleccionado) {
-                alert("Seleccione un animal y un nuevo estado.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe seleccionar un animal y un estado para actualizar.'
+                });
                 return;
             }
 
@@ -95,12 +123,29 @@ const appEstadoAnimal = Vue.createApp({
                 },
                 body: JSON.stringify(datos)
             })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.mensajes.join(', '));
-                    this.cargarRegistros();
+                .then(response => response.json().then(data => ({ data, status: response.status })))
+                .then(({ data, status }) => {
+                    if (status >= 200 && status < 300) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Éxito',
+                            text: data.mensajes.join(', ')
+                        });
+                        this.cargarRegistros();
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.mensajes.join(', ')
+                        });
+                    }
                 })
                 .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al actualizar el estado.'
+                    });
                     console.error('Error al actualizar el estado:', error);
                 });
         }
@@ -123,3 +168,4 @@ const appEstadoAnimal = Vue.createApp({
 });
 
 appEstadoAnimal.mount('#app');
+

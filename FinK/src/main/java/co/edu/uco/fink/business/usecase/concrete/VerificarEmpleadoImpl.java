@@ -46,13 +46,14 @@ public class VerificarEmpleadoImpl implements VerificarEmpleado {
 
         List<FincaEntity> resultado = factory.getEmpleadoDAO().verificarEmpleado(empleado);
 
-        FincaEntity fincares = null;
+        FincaEntity fincares = FincaEntity.Build(0);
 
         for (FincaEntity finca : resultado){
-            fincares = finca;
+            fincares.setId(finca.getId());
+            fincares.setNombre(finca.getNombre());
         }
 
-        if (Objects.equals(fincares, null)){
+        if (Objects.equals(fincares.getNombre(), "")){
             String mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000039);
             String mensajeTecnico = TextHelper.replaceParams(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M000040));
 
